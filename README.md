@@ -76,20 +76,21 @@ An end-to-end clinical machine learning decision-support system designed to pred
 ## 📁 Repository File Structure
 
 ```bash
-heart_disease_app/
+heart-disease-predictor/ (Repository Root)
 │
-├── app.py                                   # Streamlit Web Application (Main Frontend)
-├── heart.csv                                # UCI / Kaggle Heart Disease Dataset
+├── app.py                                   # Streamlit Web Application (Interactive UI & Risk Engine)
+├── heart.csv                                # UCI / Kaggle Heart Disease Dataset (918 records)
 ├── requirements.txt                         # Production Python Dependencies
-├── LogisticReg_heartdisease.pkl             # Trained Logistic Regression Model
+├── LogisticReg_heartdisease.pkl             # Trained Logistic Regression Model (89.13% Acc)
 ├── scaler.pkl                               # Pre-fitted StandardScaler
 ├── columns.pkl                              # Feature Column Order Schema
-├── metrics.json                             # Pipeline Validation Metrics
-├── sample_test_cases.csv                    # Sample CSV for Batch Prediction testing
+├── metrics.json                             # Pipeline Validation Metrics & Test Results
+├── sample_test_cases.csv                    # Sample CSV for Batch Multi-Patient Testing
 │
-├── heart_disease_final.ipynb                # Master Clean Jupyter Notebook (EDA + Cleaning + ML)
-├── Heart_Disease_Comprehensive_Viva_Guide.pdf # Complete Presentation & Viva Q&A Guide
-└── README.md                                # Project Documentation (This File)
+├── heart_disease_final.ipynb                # Master Jupyter Notebook (Visual EDA + Cleaning + ML)
+├── Heart_Disease_Comprehensive_Viva_Guide.pdf # Presentation Guide & 12 Critical Viva Q&As
+├── LICENSE                                  # MIT Open Source License
+└── README.md                                # Comprehensive Project Documentation
 ```
 
 ---
