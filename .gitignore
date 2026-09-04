@@ -1,0 +1,22 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Jupyter Checkpoints
+.ipynb_checkpoints/
+
+# Virtual Environments
+env/
+venv/
+ENV/
+
+# VS Code & IDE settings
+.vscode/
+.idea/
+
+# OS specific
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
