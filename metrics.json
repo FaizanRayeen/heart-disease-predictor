@@ -1,9 +1,9 @@
 {
-    "accuracy": 91.83,
-    "f1_score": 0.9225,
-    "precision": 0.9298,
-    "recall": 91.53,
-    "roc_auc": 0.9788,
+    "accuracy": 91.12,
+    "f1_score": 0.9162,
+    "precision": 0.9202,
+    "recall": 91.22,
+    "roc_auc": 0.976,
     "feature_columns": [
         "Age",
         "RestingBP",
@@ -21,6 +21,9 @@
         "ST_Slope_Flat",
         "ST_Slope_Up"
     ],
-    "cholesterol_mean": 244.41,
-    "resting_bp_mean": 132.24
+    "cholesterol_mean": 244.5,
+    "resting_bp_mean": 132.07,
+    "total_raw_rows": 15237,
+    "total_clean_rows": 15194,
+    "duplicates_removed": 43
 }

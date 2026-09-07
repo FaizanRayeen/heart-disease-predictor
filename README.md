@@ -59,17 +59,17 @@ An end-to-end clinical machine learning decision-support system designed to pred
 
 ---
 
-## 📈 Model Performance & Validation (15,000 Patient Cohort)
+## 📈 Model Performance & Validation (15,194 Clean Cohort)
 
-| Model Algorithm | Accuracy (%) | F1-Score | Precision | Recall (Sensitivity) | ROC-AUC |
-|---|---|---|---|---|---|
-| **Logistic Regression (Top Performer & Deployed)** | **91.83%** | **0.9225** | **0.9298** | **91.53%** | **0.9788** |
-| **Random Forest Classifier** | 90.20% | 0.9073 | 0.9113 | 0.9033 | 0.9661 |
-| **K-Nearest Neighbors (KNN)** | 88.43% | 0.8889 | 0.9072 | 0.8713 | 0.9545 |
-| **Decision Tree** | 85.37% | 0.8625 | 0.8606 | 0.8644 | 0.9279 |
-| **Naive Bayes** | 85.20% | 0.8575 | 0.8772 | 0.8387 | 0.9388 |
+| Model Algorithm | Accuracy (%) | F1-Score | Precision | Recall (Sensitivity) | ROC-AUC | Rank |
+|---|---|---|---|---|---|---|
+| **Logistic Regression (Top Performer & Deployed)** | **91.12%** | **0.9162** | **0.9202** | **91.22%** | **0.9760** | 🥇 **#1 Winner** |
+| **Random Forest Classifier** | 89.57% | 0.9022 | 0.9008 | 0.9036 | 0.9648 | 🥈 #2 |
+| **K-Nearest Neighbors (KNN)** | 88.98% | 0.8944 | 0.9131 | 0.8764 | 0.9559 | 🥉 #3 |
+| **Decision Tree** | 86.15% | 0.8699 | 0.8697 | 0.8702 | 0.9345 | #4 |
+| **Naive Bayes** | 83.32% | 0.8442 | 0.8393 | 0.8492 | 0.9371 | #5 |
 
-> 💡 **Why Logistic Regression Leads:** On this large-scale 15,000 clinical cohort, **Logistic Regression achieves the highest diagnostic performance (91.83% Accuracy, 91.53% Recall, and 0.9788 ROC-AUC)**. Its linear log-odds decision boundary aligns with clinical pathology while providing medical interpretability, transparent risk coefficients, and zero overfitting risk.
+> 💡 **Why Logistic Regression Leads:** On this natural 15,194 clinical cohort, **Logistic Regression achieves the highest diagnostic performance (91.12% Accuracy, 91.22% Recall, and 0.9760 ROC-AUC across 3,039 unseen test cases)**. Its linear log-odds decision boundary aligns with clinical pathology while providing medical interpretability, transparent risk coefficients, and zero overfitting risk.
 
 ---
 
@@ -79,12 +79,12 @@ An end-to-end clinical machine learning decision-support system designed to pred
 heart-disease-predictor/ (Repository Root)
 │
 ├── app.py                                   # Streamlit Web Application (Interactive UI & Risk Engine)
-├── heart.csv                                # Clinical Dataset (15,000 Patient Records)
+├── heart.csv                                # Clinical Dataset (15,237 Raw Patient Records)
 ├── requirements.txt                         # Production Python Dependencies
-├── LogisticReg_heartdisease.pkl             # Trained Logistic Regression Model (91.83% Acc, 91.53% Recall)
+├── LogisticReg_heartdisease.pkl             # Trained Logistic Regression Model (91.12% Acc, 91.22% Recall)
 ├── scaler.pkl                               # Pre-fitted StandardScaler
 ├── columns.pkl                              # Feature Column Order Schema
-├── metrics.json                             # Pipeline Validation Metrics (3,000 Test Cases)
+├── metrics.json                             # Pipeline Validation Metrics (3,039 Test Cases)
 ├── sample_test_cases.csv                    # Sample CSV for Batch Multi-Patient Testing
 │
 ├── heart_disease_final.ipynb                # Master Jupyter Notebook (15k Cohort EDA + Cleaning + ML)
