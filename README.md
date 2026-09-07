@@ -88,7 +88,6 @@ heart-disease-predictor/ (Repository Root)
 ├── sample_test_cases.csv                    # Sample CSV for Batch Multi-Patient Testing
 │
 ├── heart_disease_final.ipynb                # Master Jupyter Notebook (15k Cohort EDA + Cleaning + ML)
-├── Heart_Disease_Comprehensive_Viva_Guide.pdf # Presentation Guide & 12 Critical Viva Q&As
 ├── LICENSE                                  # MIT Open Source License
 └── README.md                                # Comprehensive Project Documentation
 ```
