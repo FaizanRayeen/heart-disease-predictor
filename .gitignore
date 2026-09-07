@@ -15,8 +15,6 @@ ENV/
 .vscode/
 .idea/
 
-# OS specific
-Thumbs.db
-ehthumbs.db
-Desktop.ini
-$RECYCLE.BIN/
+# Generator scripts & drafts
+generate_*.py
+*Script.pdf

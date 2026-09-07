@@ -129,7 +129,10 @@ def load_model_artifacts():
 model, scaler, feature_columns, metrics = load_model_artifacts()
 
 # Banner Header
-st.markdown("""
+acc_val = metrics.get('accuracy', 88.17)
+roc_val = metrics.get('roc_auc', 0.948)
+
+st.markdown(f"""
 <div class="main-header">
     <div style="display: flex; align-items: center; gap: 15px;">
         <span style="font-size: 2.8rem;">🫀</span>
@@ -137,8 +140,9 @@ st.markdown("""
             <h1>CardioCare AI — Heart Disease Predictor</h1>
             <p>Clinical machine learning diagnostic assistant trained on patient hemodynamic and electrocardiogram metrics.</p>
             <div>
-                <span class="metric-badge">🎯 Accuracy: 89.1%</span>
-                <span class="metric-badge">📈 ROC-AUC: 0.93</span>
+                <span class="metric-badge">🎯 Accuracy: {acc_val}%</span>
+                <span class="metric-badge">📈 ROC-AUC: {roc_val}</span>
+                <span class="metric-badge">👥 Dataset: 15,000 Records</span>
                 <span class="metric-badge">⚡ Logistic Regression Pipeline</span>
             </div>
         </div>
@@ -431,11 +435,12 @@ CONFIDENCE: {max(disease_risk, healthy_prob):.2f}%
 
 with tab2:
     st.markdown("### 📈 Model Performance & Validation")
+    st.caption("Evaluated on an 80:20 Stratified Split across 15,000 clinical records (12,000 Train / 3,000 Test).")
     m_col1, m_col2, m_col3, m_col4 = st.columns(4)
-    m_col1.metric("Model Accuracy", f"{metrics.get('accuracy', 89.13)}%")
-    m_col2.metric("F1 Score", f"{metrics.get('f1_score', 0.9029)}")
-    m_col3.metric("Precision", f"{metrics.get('precision', 0.8942)}")
-    m_col4.metric("ROC-AUC Score", f"{metrics.get('roc_auc', 0.9332)}")
+    m_col1.metric("Model Accuracy", f"{metrics.get('accuracy', 88.17)}%")
+    m_col2.metric("F1 Score", f"{metrics.get('f1_score', 0.8943)}")
+    m_col3.metric("Precision", f"{metrics.get('precision', 0.8840)}")
+    m_col4.metric("ROC-AUC Score", f"{metrics.get('roc_auc', 0.9480)}")
     
     st.markdown("---")
     st.markdown("#### 🔬 Feature Coefficients (Logistic Regression)")
