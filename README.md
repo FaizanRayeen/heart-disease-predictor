@@ -5,14 +5,16 @@
 [![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-1.3%2B-orange.svg)](https://scikit-learn.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
-An end-to-end clinical machine learning decision-support system designed to predict cardiovascular heart disease risk with **88.17% diagnostic accuracy** and **90.48% sensitivity (Recall)** on a robust **15,000 patient clinical cohort**. Built with domain-specific clinical preprocessing, generative data augmentation, and deployed as an interactive **Streamlit** web application.
+An end-to-end clinical machine learning decision-support system designed to predict cardiovascular heart disease risk with **89.13% diagnostic accuracy** and **91.18% sensitivity (Recall)**. Built with a full data cleaning pipeline, rigorous exploratory data analysis, and deployed as an interactive **Streamlit** web application.
 
 ---
 
 ## 🌟 Key Highlights
-- **🩺 Clinical Accuracy:** Achieves **88.17% Accuracy**, **0.8943 F1-Score**, and **0.9480 ROC-AUC** across 3,000 unseen test patients using an interpretable Logistic Regression pipeline.
-- **📈 15,000-Record Clinical Cohort:** Multi-center benchmark cases expanded using **Stratified Generative Clinical Data Augmentation**, preserving physiological distributions and correlation matrices.
-- **🧹 Domain-Specific Data Cleaning:** Identifies and handles zero values in Cholesterol and Resting Blood Pressure via statistical mean imputation.
+- **🩺 Clinical Accuracy:** Achieves **89.13% Accuracy**, **0.9029 F1-Score**, and **0.9332 ROC-AUC** using an interpretable Logistic Regression pipeline on the 918 clinical benchmark records.
+- **🌿 Multi-Scale Branches:**
+  - `main` branch: Standard clinical benchmark dataset (**918 patient records**).
+  - [`cohort-15k`](https://github.com/FaizanRayeen/heart-disease-predictor/tree/cohort-15k) branch: Scaled large-cohort dataset (**15,000 patient records**).
+- **🧹 Domain-Specific Data Cleaning:** Identifies and handles **172 masked zero values in Cholesterol** and **1 in Resting Blood Pressure** (physiologically impossible in living patients) via statistical mean imputation.
 - **📊 Outlier Analysis:** Outlier detection using the **Interquartile Range (IQR) method** across hemodynamic biomarkers.
 - **⚡ Instant Real-Time Risk Gauge:** Dynamic Plotly probability meter (0% to 100%) categorizing patient risk into **Low (Green)**, **Moderate (Yellow)**, or **High (Red)**.
 - **📁 Multi-Patient Batch Predictor:** Upload clinical CSV files with multiple patient vitals to generate batch predictions with downloadable reports.
@@ -25,17 +27,17 @@ An end-to-end clinical machine learning decision-support system designed to pred
 ```
 ┌─────────────────────────┐      ┌─────────────────────────┐      ┌─────────────────────────┐
 │ 1. DATA COLLECTION      │ ───► │ 2. IN-DEPTH CLEANING    │ ───► │ 3. PREPROCESSING        │
-│ • 15,000 Patient Cohort │      │ • Statistical Mean Imp. │      │ • One-Hot Encoding      │
-│ • 11 Medical Features   │      │ • Generative Augment.   │      │ • Stratified 80:20 Split│
+│ • 918 Patient Records   │      │ • Expose 172 hidden 0s  │      │ • One-Hot Encoding      │
+│ • 11 Medical Features   │      │ • Mean Imputation       │      │ • Stratified 80:20 Split│
 │ • 1 Binary Target       │      │ • IQR Outlier Analysis  │      │ • StandardScaler Scaling│
 └─────────────────────────┘      └─────────────────────────┘      └─────────────────────────┘
                                                                                │
 ┌─────────────────────────┐      ┌─────────────────────────┐                   ▼
 │ 6. WEB DEPLOYMENT       │ ◄─── │ 5. PIPELINE EXPORT      │ ◄─── ┌─────────────────────────┐
 │ • Streamlit Web UI      │      │ • LogisticReg Model .pkl│      │ 4. MODEL EVALUATION     │
-│ • Interactive Gauges    │      │ • Scaler & Columns .pkl │      │ • 12,000 Train / 3k Test│
-│ • Batch CSV Predictor   │      │ • Cached Resource Load  │      │ • 88.17% Accuracy       │
-└─────────────────────────┘      └─────────────────────────┘      │ • 90.48% Recall         │
+│ • Interactive Gauges    │      │ • Scaler & Columns .pkl │      │ • 6 Classifiers Compared│
+│ • Batch CSV Predictor   │      │ • Cached Resource Load  │      │ • 89.13% Accuracy       │
+└─────────────────────────┘      └─────────────────────────┘      │ • 91.18% Recall         │
                                                                   └─────────────────────────┘
 ```
 
@@ -59,17 +61,18 @@ An end-to-end clinical machine learning decision-support system designed to pred
 
 ---
 
-## 📈 Model Performance & Validation (15,000 Patient Cohort)
+## 📈 Model Performance & Validation
 
 | Model Algorithm | Accuracy (%) | F1-Score | Precision | Recall (Sensitivity) | ROC-AUC |
 |---|---|---|---|---|---|
-| **Random Forest Classifier** | 96.77% | 0.9711 | 0.9622 | 0.9801 | 0.9953 |
-| **K-Nearest Neighbors (KNN)** | 95.27% | 0.9573 | 0.9567 | 0.9578 | 0.9835 |
-| **Decision Tree** | 94.17% | 0.9475 | 0.9443 | 0.9506 | 0.9406 |
-| **Logistic Regression (Clinical Deployment)** | **87.90%** | **0.8918** | **0.8826** | **0.9012** | **0.9414** |
-| **Naive Bayes** | 87.90% | 0.8909 | 0.8890 | 0.8928 | 0.9374 |
+| **Logistic Regression (Selected)** | **89.13%** | **0.9029** | **0.8942** | **0.9118** | **0.9332** |
+| **Random Forest Classifier** | 88.59% | 0.8986 | 0.8857 | 0.9118 | 0.9284 |
+| **Support Vector Machine (SVM)** | 88.04% | 0.8942 | 0.8774 | 0.9118 | 0.9215 |
+| **K-Nearest Neighbors (KNN)** | 85.87% | 0.8756 | 0.8545 | 0.8980 | 0.9042 |
+| **Naive Bayes** | 85.33% | 0.8708 | 0.8532 | 0.8894 | 0.9101 |
+| **Decision Tree** | 79.35% | 0.8119 | 0.8200 | 0.8039 | 0.7925 |
 
-> 💡 **Clinical Rationale for Logistic Regression Selection:** While ensemble tree methods achieve high mathematical scores, **Logistic Regression** is chosen as the primary clinical diagnostic engine due to its **interpretability** (direct odds ratios and feature weight coefficients), high diagnostic sensitivity (**90.12% Recall** across 3,000 test cases), and zero black-box risk in medical decision-making.
+> 💡 **Why Recall Matters:** In healthcare diagnostics, a **False Negative** (sending a sick patient home) can be fatal. Our model achieves **91.18% Recall**, meaning over 91 out of 100 diseased patients are accurately detected.
 
 ---
 
@@ -79,15 +82,15 @@ An end-to-end clinical machine learning decision-support system designed to pred
 heart-disease-predictor/ (Repository Root)
 │
 ├── app.py                                   # Streamlit Web Application (Interactive UI & Risk Engine)
-├── heart.csv                                # Clinical Dataset (15,000 Patient Records)
+├── heart.csv                                # UCI / Kaggle Heart Disease Dataset (918 records)
 ├── requirements.txt                         # Production Python Dependencies
-├── LogisticReg_heartdisease.pkl             # Trained Logistic Regression Model (87.90% Acc, 90.12% Recall)
+├── LogisticReg_heartdisease.pkl             # Trained Logistic Regression Model (89.13% Acc)
 ├── scaler.pkl                               # Pre-fitted StandardScaler
 ├── columns.pkl                              # Feature Column Order Schema
-├── metrics.json                             # Pipeline Validation Metrics (3,000 Test Cases)
+├── metrics.json                             # Pipeline Validation Metrics & Test Results
 ├── sample_test_cases.csv                    # Sample CSV for Batch Multi-Patient Testing
 │
-├── heart_disease_final.ipynb                # Master Jupyter Notebook (15k Cohort EDA + Cleaning + ML)
+├── heart_disease_final.ipynb                # Master Jupyter Notebook (Visual EDA + Cleaning + ML)
 ├── LICENSE                                  # MIT Open Source License
 └── README.md                                # Comprehensive Project Documentation
 ```
